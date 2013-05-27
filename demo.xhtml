@@ -1,0 +1,43 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Convex polygons intersection (demo by Wojciech Muła)</title>
+    <script src="math.js"></script>
+    <script src="gui.js"></script>
+    <script src="demo.js"></script>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body id="body" onload="init()">
+
+<button onclick="GUI.select(0)">polygon 1</button>
+<button onclick="GUI.select(1)">polygon 2</button>
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="canvas"
+  viewBox="0 0 800 800" preserveAspectRatio="xMidYMid slice"
+  style="width:100%; height:100%">
+
+	<polygon id="polygon0"
+		points=""
+		fill="none"
+		stroke="black"
+	/>
+
+	<polygon id="polygon1"
+		points=""
+		fill="none"
+		stroke="black"
+	/>
+
+    <line id="sample_line"
+        x1="0"
+        y1="0"
+        x2="100"
+        y2="100"
+    />
+	
+	<text id="status"
+		x="5"
+		y="30"
+	></text>
+</svg>
+</body>
+</html>

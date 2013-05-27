@@ -1,0 +1,26 @@
+polygon {
+    stroke: black;
+    fill: #ddd;
+    fill-opacity: 0.5;
+}
+
+line {
+    stroke: green;
+}
+
+.selected {
+    stroke: blue;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.collision {
+    fill: red;
+}
+
+#canvas {
+    border-width: 1px;
+    border-style: solid;
+}
