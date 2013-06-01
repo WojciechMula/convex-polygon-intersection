@@ -1,6 +1,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Convex polygons intersection (demo by Wojciech Muła)</title>
+    <script src="point.js"></script>
+    <script src="polygon.js"></script>
+    <script src="line.js"></script>
     <script src="math.js"></script>
     <script src="gui.js"></script>
     <script src="demo.js"></script>
@@ -8,18 +11,20 @@
 </head>
 <body id="body" onload="init()">
 
-<button onclick="GUI.select(0)">polygon 1</button>
-<button onclick="GUI.select(1)">polygon 2</button>
-
+<table>
+<tr>
+<td width="20%" valign="top">
+    <button onclick="gui.select(1)">select polygon 1</button>
+    <button onclick="gui.select(2)">select polygon 2</button>
+    <button onclick="gui.generate(1)">new polygon 1</button>
+    <button onclick="gui.generate(2)">new polygon 2</button>
+    <button onclick="gui.rotate_left()">rotate left selected</button>
+    <button onclick="gui.rotate_right()">rotate right selected</button>
+</td>
+<td width="80%">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="canvas"
   viewBox="0 0 800 800" preserveAspectRatio="xMidYMid slice"
   style="width:100%; height:100%">
-
-	<polygon id="polygon0"
-		points=""
-		fill="none"
-		stroke="black"
-	/>
 
 	<polygon id="polygon1"
 		points=""
@@ -27,11 +32,17 @@
 		stroke="black"
 	/>
 
-    <line id="sample_line"
+	<polygon id="polygon2"
+		points=""
+		fill="none"
+		stroke="black"
+	/>
+
+    <line id="separating_line"
         x1="0"
         y1="0"
-        x2="100"
-        y2="100"
+        x2="0"
+        y2="0"
     />
 	
 	<text id="status"
@@ -39,5 +50,9 @@
 		y="30"
 	></text>
 </svg>
+</td>
+</tr>
+</table>
+
 </body>
 </html>

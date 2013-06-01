@@ -1,5 +1,4 @@
-var polygons = [];
-var GUI;
+var gui;
 
 function init() {
 
@@ -13,55 +12,46 @@ function init() {
             return Math.floor(Math.random() * (max - min) + min);
         }
 
-        function get_length(x, y) {
-            return Math.sqrt(x*x + y*y);
+        var polygon = new Polygon();
+
+        p1 = new Point(random(-radius, radius), random(-radius, radius));
+        p2 = new Point(random(-radius, radius), random(-radius, radius));
+        p3 = new Point(random(-radius, radius), random(-radius, radius));
+
+        p1.set_length(radius);
+        p2.set_length(radius);
+        p3.set_length(radius);
+
+        polygon.add(p1);
+        polygon.add(p2);
+        polygon.add(p3);
+
+        var c = polygon.center();
+        polygon.translate(-c.x, -c.y);
+
+        while (polygon.points.length < num_points) {
+            var idx = randint(0, polygon.points.length);
+            var p1 = polygon.get(idx);
+            var p2 = polygon.get(idx + 1);
+
+            var x = (p1.x + p2.x)/2;
+            var y = (p1.y + p2.y)/2;
+            var p = new Point(x, y);
+
+            p.set_length(random(p.get_length(), radius));
+
+            polygon.points.splice(idx+1, 0, p);
         }
 
-        function set_length(x, y, length) {
-            var len = get_length(x, y);
+        polygon.translate(dx, dy)
 
-            return [x*length/len, y*length/len];
-        }
-
-        var points = [
-            set_length(random(-radius, radius), random(-radius, radius), radius),
-            set_length(random(-radius, radius), random(-radius, radius), radius),
-            set_length(random(-radius, radius), random(-radius, radius), radius)
-        ];
-
-        var [cx, cy] = get_center(points);
-
-        translate(points, -cx, -cy);
-
-        while (points.length < num_points) {
-            var idx = randint(0, points.length);
-            var p1 = points[idx];
-            var p2 = points[idx + 1];
-
-            if (p2 == undefined) {
-                continue;
-            }
-
-            var x = (p1[0] + p2[0])/2;
-            var y = (p1[1] + p2[1])/2;
-            var min_length = get_length(x, y);
-
-            var p = set_length(x, y, random(min_length, radius));
-
-            points.splice(idx+1, 0, p);
-        }
-
-        return translate(points, dx, dy);
+        return polygon;
     }
 
-    var polygons = [
-        create_convex_polygon(6, 100, 100, 200),
-        create_convex_polygon(6, 100, 300, 200)
-    ];
-
-    var options = {
-        polygons: polygons,
+    function create_callback(dx, dy) {
+        return create_convex_polygon(6, 150, dx, dy)
     }
 
-    GUI = create_GUI(options);
+    gui = new GUI(create_callback);
+    gui.init();
 }
