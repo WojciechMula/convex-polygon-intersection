@@ -44,7 +44,6 @@ function GUI(create_polygon) {
     var self = this;
 
     function onKeyPress(ev) {
-        console.log(ev);
         var key = null;
         try {
             key = String.fromCharCode(ev.charCode);
