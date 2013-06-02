@@ -34,18 +34,19 @@ function check(polygon1, polygon2) {
                 B2 = polygon2.get(j),
                 B3 = polygon2.get(j + 1);
 
-            var line = new Line(A2, B2);
+            line = new Line(A2, B2);
 
             var sideA = get_side(A1, A3);
+            if (sideA === null) continue;
             var sideB = get_side(B1, B3);
+            if (sideB === null) continue;
 
-            if (sideA != null && sideB != null) {
-                if (sideA * sideB < 0.0) {
-                    return [A2, B2];
-                }
+            if (sideA * sideB < 0.0) {
+                return [A2, B2];
             }
         }
     }
 
     return null;
 }
+

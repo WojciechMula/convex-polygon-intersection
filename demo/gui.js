@@ -1,11 +1,13 @@
 function GUI(create_polygon) {
 
-    var origin_x    = null;
-    var origin_y    = null;
-    var current_x   = null;
-    var current_y   = null;
-    var moving      = false;
-    var rotate_by   = 5.0;
+    var origin_x      = null;
+    var origin_y      = null;
+    var current_x     = null;
+    var current_y     = null;
+    var moving        = false;
+    var rotate_by     = 5.0;
+    var scale_larger  = 1.05;
+    var scale_smaller = 0.95;
 
     var polygon1 = null;
     var polygon2 = null;
@@ -63,6 +65,12 @@ function GUI(create_polygon) {
                 break;
             case 'R':
                 self.rotate_right();
+                break;
+            case 's':
+                self.scale(scale_smaller);
+                break;
+            case 'S':
+                self.scale(scale_larger);
                 break;
             case 'g':
             case 'G':
@@ -167,6 +175,20 @@ function GUI(create_polygon) {
 
     this.rotate_right = function() {
         rotate(-rotate_by);
+    }
+
+    this.scale = function(scale) {
+        var result = get();
+
+        if (result) {
+            [polygon, polygon_element] = result;
+
+            var c = polygon.center();
+            polygon.scale(c.x, c.y, scale);
+
+            display_polygon(polygon, polygon_element);
+            check_intersection();
+        }
     }
 
     this.init = function() {

@@ -52,6 +52,16 @@ function Polygon() {
         }
     }
 
+    this.scale = function(x0, y0, scale) {
+        for (i in this.points) {
+            var x = this.points[i].x - x0;
+            var y = this.points[i].y - y0;
+
+            this.points[i].x = x*scale + x0;
+            this.points[i].y = y*scale + y0;
+        }
+    }
+
     this.center = function() {
         var n = this.points.length;
 
