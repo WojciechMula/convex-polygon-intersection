@@ -1,0 +1,76 @@
+<html>
+	<head>
+	<title></title>
+	<style type="text/css">
+	body {
+		margin: 10px;
+		padding: 0;
+	}
+	canvas {
+		border: 1px solid black;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	</style>
+</head>
+<body>
+
+<canvas id="draw" width="500" height="500"></canvas>
+<script type="text/javascript" src="point.js"></script>
+<script type="text/javascript" src="convex_hull.js"></script>
+<script type="text/javascript">
+
+var canvas = document.getElementById('draw');
+var ctx = canvas.getContext('2d');
+var width = 500;
+var height = 500;
+var num_points = 10;
+var radius = 200;
+
+        function random(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        function randint(min, max) {
+            return Math.floor(Math.random() * (max - min) + min);
+        }
+
+		function generate_points() {
+			var points = new Array();
+			for (var i = 0; i < num_points; i++) {
+				var P = new Point(random(-10, 10), random(-10, 10));
+				P.set_length(random(0.1 * radius, radius));
+				P.x += width / 2;
+				P.y += height / 2;
+
+				points.push(P);
+			}
+
+			return points;
+		}
+
+var points = generate_points();
+for (i in points) {
+	var P = points[i];
+	ctx.beginPath();
+	ctx.arc(P.x, P.y, 2, 0.0, Math.PI * 2, true);
+	ctx.fill();
+}
+
+var ch = convex_hull(points);
+ctx.beginPath();
+ctx.moveTo(ch[0].x, ch[0].y)
+for (i in ch) {
+	ctx.lineTo(ch[i].x, ch[i].y)
+}
+
+var i = 0;
+ctx.lineTo(ch[i].x, ch[i].y)
+ctx.stroke();
+	
+
+</script>
+</html>
+
+
