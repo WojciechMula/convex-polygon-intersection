@@ -38,7 +38,7 @@ function init() {
     }
 
     function create_callback(dx, dy) {
-        return create_convex_polygon(6, 150, dx, dy)
+        return create_convex_polygon(15, 150, dx, dy)
     }
 
     gui = new GUI(create_callback);

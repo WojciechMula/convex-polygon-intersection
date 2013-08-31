@@ -123,6 +123,25 @@ function GUI(create_polygon) {
             element.polygon1.classList.add("collision");
             element.polygon2.classList.add("collision");
         }
+
+		var result = SAT(polygon1, polygon2);
+
+		if (result) {
+            var [P0, P1, N, range1, range2] = result;
+            var line = element.sat_normal;
+
+            var A = lerp(P0, P1, 0.5);
+            var B = new Point(A.x + N.x, A.y + N.y);
+
+            line.setAttribute('x1', A.x);
+            line.setAttribute('y1', A.y);
+            line.setAttribute('x2', B.x);
+            line.setAttribute('y2', B.y);
+            line.classList.remove("hidden");
+		} else {
+            var line = element.sat_normal;
+            line.classList.add("hidden");
+		}
     }
 
     function get(index) {
@@ -195,7 +214,8 @@ function GUI(create_polygon) {
 
         element["polygon1"] = document.getElementById("polygon1");
         element["polygon2"] = document.getElementById("polygon2");
-        element["line"] = document.getElementById("separating_line");
+        element["line"]     = document.getElementById("separating_line");
+        element["sat_normal"] = document.getElementById("sat_normal");
 
         polygon1 = create_polygon(200, 200);
         polygon2 = create_polygon(400, 200);
