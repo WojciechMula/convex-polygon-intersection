@@ -18,6 +18,14 @@ button:hover {
     font-family: monospace;
 }
 
+.blue {
+	color: blue;
+}
+
+.green {
+	color: green;
+}
+
 /* svg */
 polygon {
     stroke: black;
@@ -27,6 +35,10 @@ polygon {
 
 line {
     stroke: green;
+}
+
+line#sat_normal {
+    stroke: blue;
 }
 
 .selected {

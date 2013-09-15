@@ -1,3 +1,12 @@
+/***********************************************************************
+
+	Line in form a*x + b*y + c = 0
+
+	author: Wojciech Muła, wojciech_mula@poczta.onet.pl
+	license: public domain
+	last update: 2013-09-15
+
+***********************************************************************/
 
 function Line(point1, point2) {
 

@@ -1,6 +1,14 @@
-/**
- * Find convex hull using Jarvis algorithm
- */
+/***********************************************************************
+
+	Find convex hull using Jarvis algorithm
+
+	author: Wojciech Muła, wojciech_mula@poczta.onet.pl
+	license: public domain
+	last update: 2013-09-15
+
+***********************************************************************/
+
+
 function convex_hull(points) {
 
 	switch (points.length) {

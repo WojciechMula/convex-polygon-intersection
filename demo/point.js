@@ -1,3 +1,13 @@
+/***********************************************************************
+
+	2D point class
+
+	author: Wojciech Muła, wojciech_mula@poczta.onet.pl
+	license: public domain
+	last update: 2013-09-15
+
+***********************************************************************/
+
 function Point(x, y) {
     this.x = x;
     this.y = y;

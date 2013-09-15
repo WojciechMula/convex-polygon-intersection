@@ -1,3 +1,13 @@
+/***********************************************************************
+
+	GUI handling
+
+	author: Wojciech Muła, wojciech_mula@poczta.onet.pl
+	license: public domain
+	last update: 2013-09-15
+
+***********************************************************************/
+
 function GUI(create_polygon) {
 
     var origin_x      = null;
@@ -102,7 +112,7 @@ function GUI(create_polygon) {
     }
 
     function check_intersection() {
-        var result = check(polygon1, polygon2);
+        var result = naive(polygon1, polygon2);
         if (result !== null) {
             // without intrsection
             var [V1, V2] = result;

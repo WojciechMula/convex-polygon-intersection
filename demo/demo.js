@@ -1,3 +1,13 @@
+/***********************************************************************
+
+	Demo webpage setup
+
+	author: Wojciech Muła, wojciech_mula@poczta.onet.pl
+	license: public domain
+	last update: 2013-09-15
+
+***********************************************************************/
+
 var gui;
 
 function init() {

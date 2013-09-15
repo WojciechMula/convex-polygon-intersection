@@ -5,7 +5,8 @@
     <script src="polygon.js"></script>
     <script src="convex_hull.js"></script>
     <script src="line.js"></script>
-    <script src="math.js"></script>
+    <script src="SAT.js"></script>
+    <script src="naive.js"></script>
     <script src="gui.js"></script>
     <script src="demo.js"></script>
     <link href="style.css" rel="stylesheet" type="text/css" />
@@ -21,6 +22,14 @@
     <button onclick="gui.generate(2)">new polygon 2</button>
     <button onclick="gui.rotate_left()">rotate left selected</button>
     <button onclick="gui.rotate_right()">rotate right selected</button>
+
+	<h2>Usage</h2>
+
+	<p>Click on selected polygon to move</p>
+
+	<p>If polygons do not intersect there are shown two lines:
+	<span class="blue">blue</span> is a normal obtained by SAT,
+	<span class="green">green</span> is separating line found by naive algorithm.</p>
 
     <h2>Keys</h2>
     <ul>    
